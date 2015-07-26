@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html ng-app="ngBoilerplate" ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="Todo List"></title>
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+    <!-- extra CSS -->
+    <style>
+    h2 {
+      color: black;
+    }
+    </style>
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+  </head>
+  <body>
+    <br/>
+    <div class="container" ng-controller="TodoCtrl">
+    <div class="well">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+              <h1>AngularJS Todo List</h1>
+              <form class="form-horizontal">
+                  <input type="title" ng-model="formTodoTitle" class="form-control" placeholder="Title">
+                  <textarea ng-model="formTodoText" class="form-control" rows="3" placeholder="Text"></textarea>
+                  <button class="btn btn-primary" ng-click="addTodo()">Submit</button>
+              </form>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4" >
+      <div class="well">
+          <h2>Todo Now</h2>
+          <ul class="unstyled">
+              <li ng-repeat="todo in todos">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">{{todo.title}} <input type="checkbox" ng-model="todo.done"></h3>
+                      </div>
+                      <div class="panel-body">
+                        {{todo.text}}
+                      </div>
+                  </div>
+              </li>
+          </ul>
+          <h3>Now Todos: {{getTotalTodos(todos)}}</h3>
+          <button class="btn btn-success" ng-click="moveNowCompleted()">Completed</button>
+           <button class="btn btn-warning" ng-click="moveNowLater()">Later</button>
+           <button class="btn btn-danger" ng-click="clearCompleted()">Delete</button>
+      </div>
+      </div>
+
+      <div class="col-md-4">
+      <div class="well">
+          <h2>Todo Later</h2>
+          <ul class="unstyled">
+              <li ng-repeat="todo in laterTodos">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">{{todo.title}} <input type="checkbox" ng-model="todo.done"></h3>
+                      </div>
+                      <div class="panel-body">
+                        <p>{{todo.text}}</p>
+                      </div>
+                  </div>
+              </li>
+          </ul>
+          <h3>Later Todos: {{getLaterTotalTodos()}}</h3>
+          <button class="btn btn-success" ng-click="moveLaterCompleted()">Completed</button>
+          <button class="btn btn-warning" ng-click="moveLaterNow()">Now</button>
+          <button class="btn btn-danger" ng-click="clearLaterCompleted()">Delete</button>
+      </div>
+      </div>
+
+      <div class="col-md-4">
+      <div class="well">
+          <h2>Todo Completed</h2>
+          <ul class="unstyled">
+              <li ng-repeat="todo in completedTodos">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">{{todo.title}} <input type="checkbox" ng-model="todo.done"></h3>
+                      </div>
+                      <div class="panel-body">
+                        {{todo.text}}
+                      </div>
+                  </div>
+              </li>
+          </ul>
+          <h3>Completed Todos: {{getCompletedTotalTodos()}}</h3>
+          <button class="btn btn-success" ng-click="moveCompletedNow()">Now</button>
+          <button class="btn btn-warning" ng-click="moveCompletedLater()">Later</button>
+          <button class="btn btn-danger" ng-click="clearCompletedCompleted()">Delete</button>
+      </div>
+      </div>
+
+    </div>
+    </div>
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>Todo list web app created by
+          <a href="volkandkaya.github.io/">Volkan Kaya</a>.
+            Using <a href="http://github.com/ngbp/ngbp">ngbp</a>
+            <br />
+            ngbp is based on
+            <a href="http://www.angularjs.org">AngularJS</a>,
+            <a href="http://getbootstrap.com">Bootstrap</a>,
+            <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
+            and
+            <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
