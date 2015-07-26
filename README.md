@@ -21,13 +21,13 @@ Finally, open `file:///path/to/ng-boilerplate/build/index.html` in your browser.
 
 ## To be added
 
-Draggable todo's
-Able to edit todo's
-Add deadline date
-Add order by deadline date and created date
-Split up app.js into separate js files
-Split up index.html into separate html files
-Add a database
-Add user logins
-Add anonymous list creation by unique id
+#####Draggable todo's
+#####Able to edit todo's
+#####Add deadline date
+#####Add order by deadline date and created date
+#####Split up app.js into separate js files
+#####Split up index.html into separate html files
+#####Add a database
+#####Add user logins
+#####Add anonymous list creation by unique id
 
